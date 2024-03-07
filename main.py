@@ -1,3 +1,5 @@
+from colorama import init, Back, Style
+init()
 from Player import Player
 from menu import option_menu as menu
 from color import prYellow
