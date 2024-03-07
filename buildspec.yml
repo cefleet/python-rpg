@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - mkdir 'C:\tmp\nuget'
+      - mkdir 'C:\tmp\temp-pip'
+      - wget https://aka.ms/nugetclidl -OutFile 'C:\tmp\nuget\nuget.exe'
+      - C:\tmp\nuget\nuget.exe install python -ExcludeVersion -OutputDirectory .
+      - wget https://bootstrap.pypa.io/get-pip.py -OutFile 'C:\tmp\temp-pip\get-pip.py'
+      - py C:\tmp\temp-pip\get-pip.py
+      - pip install pyinstaller
+      - pip install Pillow
+      - pip install termcolor
+      - pip install colorama
+  build:
+    commands:
+      - pyinstaller main.py --hidden-import=termcolor --hidden-import=colorama --icon=serial-rpger.png  --onefile --name=py-rpg
+      
+artifacts:
+  files:
+    - dist/firmware-test.exe
+    - dist/factory-setup-test.exe
+    - dist/full-factory-test.exe
+    - dist/rsl-plotter.exe
+    
+  discard-paths: yes
