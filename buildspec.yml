@@ -15,13 +15,9 @@ phases:
       - pip install colorama
   build:
     commands:
-      - pyinstaller main.py --hidden-import=termcolor --hidden-import=colorama --icon=serial-rpger.png  --onefile --name=py-rpg
+      - pyinstaller main.py --hidden-import=termcolor --hidden-import=colorama --icon=serial-rpger.png  --onefile --name=py-rpg.exe
       
 artifacts:
   files:
-    - dist/firmware-test.exe
-    - dist/factory-setup-test.exe
-    - dist/full-factory-test.exe
-    - dist/rsl-plotter.exe
-    
+    - dist/py-rpg.exe
   discard-paths: yes
